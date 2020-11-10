@@ -1,0 +1,125 @@
+@import './tool.scss';
+
+.personal-box{
+	padding: 20rpx 25rpx 109rpx;
+	min-height: 100%;
+	background: $uni-bg-color;
+	
+	.distribution-info{
+		width: 100%;
+		padding: 30rpx 0 30rpx 30rpx;
+		background: $uni-color-primary;
+		position: relative;
+		border-radius:10rpx;
+		margin-bottom: 20rpx;
+		
+		.user-box{
+			height: 100rpx;
+			@include vertical-sides();
+			justify-content: flex-start;
+			.user-pic{
+				width: 100rpx;
+				height: 100rpx;
+				border-radius: 50%;
+				background-color: $uni-pic-bg;
+			}
+			
+			.user-info{
+				margin-left: 24rpx;
+				.name{
+					max-width: 192rpx;
+					color: $uni-white-color;
+					font-size: $uni-font-size-f4;
+					@include wordEllipsis();
+				}
+				.user-id{
+					margin-top: 15rpx;
+					color: #FFE5D7;
+					font-size: $uni-font-size-f5;
+				}
+			}
+			
+			.level{
+				margin-top: -55rpx;
+				background-color: $uni-text-color;
+				border-radius:18rpx;
+				margin-left: 20rpx;
+				padding: 0 10rpx;
+				height: 36rpx;
+				line-height: 38rpx;
+				color: $uni-white-color;
+				font-size: $uni-font-size-f7;
+				text-align: center;
+			}
+		}
+		
+		.order-box{
+			margin-top: 60rpx;
+			padding-right: 30rpx;
+			@include vertical-sides();
+			
+			.order-list{
+				width: 20%;
+				height: 100rpx;
+				
+				.icon{
+					width: 40rpx;
+					height: 40rpx;
+					margin: 8rpx auto;
+				}
+				
+				.name{
+					color: $uni-white-color;
+					font-size: $uni-font-size-f6;
+					text-align: center;
+				}
+			}
+			
+			.cutting{
+				position: relative;
+				&:before{
+					content: '';
+					width: 2rpx;
+					height: 64rpx;
+					position: absolute;
+					left: 0;
+					top: 14rpx;
+					background: #FFA679;
+				}
+				&:after{
+					content: '';
+					width: 2rpx;
+					height: 64rpx;
+					position: absolute;
+					right: 0;
+					top: 14rpx;
+					background: #FFA679;
+				}
+			}
+		}
+	}
+
+	.list{
+		width: 100%;
+		height: 120rpx;
+		padding: 0 20rpx;
+		@include vertical-sides();
+		border-bottom: 2rpx solid $uni-text-color-disable;
+		
+		.list-info{
+			@include vertical-sides();
+			justify-content: flex-start;
+			
+			.icon{
+				width: 34rpx;
+				height: 34rpx;
+				margin-right: 30rpx;
+			}
+			
+			text{
+				font-size: $uni-text-color;
+				font-size: $uni-font-size-f5;
+			}
+		}
+	}
+}

@@ -1,0 +1,141 @@
+@import './tool.scss';
+
+.index-box{
+	padding: 0 25rpx 109rpx;
+	background: $uni-bg-color;
+	
+	.uni-padding-wrap{
+		border-radius:10rpx;
+		padding-top: 20rpx;
+		.swiper{
+			height: 280rpx;
+		}
+		
+		.shuffling{
+			width: 100%;
+			height: 280rpx;
+			background-color: $uni-pic-bg;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius:10rpx;
+		}
+	}
+	
+	
+	.nav-box {
+		padding: 0 10rpx;
+		ul {
+			li {
+				padding-top: 30rpx;
+				float: left;
+				width: 25%;
+				text-align: center;
+		
+				.icon {
+					width: 80rpx;
+					height: 80rpx;
+					display: block;
+					margin: 0 auto;
+				}
+		
+				p {
+					margin-top: 10rpx;
+					font-size: $uni-font-size-f6;
+					color: $uni-text-color;
+				}
+			}
+		}
+	}
+	
+	.message{
+		margin-top: 40rpx;
+		
+		.title{
+			color: $uni-text-color;
+			font-size: 30rpx;
+			font-weight: bold;
+		}
+		
+		.list{
+			padding: 30rpx 0 0 30rpx;
+			@include vertical-sides();
+			
+			.list-left{
+				font-size: $uni-font-size-f6;
+				color: $uni-text-color;
+			}
+			
+			.list-right{
+				display: flex;
+				align-items: center;
+				
+				
+				text{
+					font-size: $uni-font-size-f7;
+					color: $uni-text-color-grey;
+				}
+				
+				.icon{
+					width: 16rpx;
+					height: 16rpx;
+					margin-left: 17rpx;
+				}
+			}
+		}
+	}
+	
+	.hot-goods{
+		margin-top: 40rpx;
+		
+		.title{
+			@include vertical-sides();
+			
+			text{
+				color: $uni-text-color;
+				font-size: 30rpx;
+				font-weight: bold;
+			}
+		}
+		
+		.goods{
+			margin-top: 20rpx;
+			
+			.goods-pic{
+				width:700rpx;
+				height:300rpx;
+				background:$uni-pic-bg;
+				border-radius:10rpx;
+			}
+			
+			.goods-info{
+				padding: 15rpx 20rpx 0;
+				@include vertical-sides();
+				
+				.goods-name{
+					font-size: $uni-font-size-f5;
+					color: #293141;
+				}
+				
+				.goods-price{
+					font-size: $uni-font-size-f5;
+					color: $uni-text-color;
+				}
+			}
+		}
+	}
+
+	.information{
+		margin-top: 40rpx;
+		
+		.title{
+			margin-bottom: 20rpx;
+			@include vertical-sides();
+			
+			text{
+				color: $uni-text-color;
+				font-size: 30rpx;
+				font-weight: bold;
+			}
+		}
+	}
+}

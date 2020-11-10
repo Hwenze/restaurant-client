@@ -1,0 +1,117 @@
+@import './tool.scss';
+
+.menu{
+	background: $uni-bg-color;
+	
+	.header-box{
+		width: 100%;
+		position: relative;
+		
+		.header-bg{
+			width: 100%;
+			height: 200rpx;
+			background-color: $uni-pic-bg;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		
+		.header-icon{
+			width: 120rpx;
+			height: 120rpx;
+			border-radius: 50%;
+			background-color: $uni-pic-bg;
+			background-size: cover;
+			background-repeat: no-repeat;
+			margin: 0 auto;
+			position: absolute;
+			top: 140rpx;
+			left: 0;
+			right: 0;
+		}
+		
+		.header-title{
+			text-align: center;
+			font-size: $uni-font-size-f2;
+			color: $uni-text-color;
+			font-weight: bold;
+			margin-top: 70rpx;
+		}
+	}
+	
+	.menu-list{
+		position: relative;
+		margin-top: 20rpx;
+		padding-bottom: 98rpx;
+	}
+	
+	.shopping-cart{
+		width: 100%;
+		height: 98rpx;
+		position: fixed;
+		bottom: 0;
+		background-color: #505052;
+		@include vertical-sides();
+		
+		.cart-box{
+			@include vertical-sides();
+			
+			.icon-box{
+				width: 98rpx;
+				height: 98rpx;
+				border-radius: 50%;
+				position: relative;
+				margin:-44rpx 30rpx 0 40rpx ;
+				background-color: #444444;
+				@include vertical-sides();
+				justify-content: center;
+				
+				.icon{
+					width: 78rpx;
+					height: 78rpx;
+					border-radius: 50%;
+					background-color: #363636;
+					background-repeat: no-repeat;
+					background-size: 48rpx;
+					background-position: center;
+					background-image: url('@/static/image/shopping_cart.png');
+					
+					&.active{
+						background-color: $uni-color-primary;
+						background-image: url('@/static/image/shopping_cart_act.png');
+					}
+				}
+				
+				.num{
+					position: absolute;
+					top: -6rpx;
+					right: -6rpx;
+					padding: 3rpx 12rpx;
+					border-radius: 50%;
+					background-color: $uni-color-error;
+					color: $uni-white-color;
+					font-size: $uni-font-size-f6;
+				}
+			}
+			
+			.price{
+				color: $uni-white-color;
+				font-size: $uni-font-size-f2;
+			}
+		}
+		
+		.operation{
+			width: 200rpx;
+			height: 98rpx;
+			text-align: center;
+			line-height: 98rpx;
+			color: $uni-text-color-inverse;
+			
+			&.active{
+				background-color: $uni-color-primary;
+				font-size: $uni-font-size-f5;
+				font-weight: bold;
+				color: $uni-white-color;
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+.personal-box{
+	padding: 0 25rpx 69rpx;
+	
+	.content-card{
+		margin:20rpx 0 40rpx;
+	}
+	
+	.logout{
+		width:100%;
+		height:100rpx;
+		line-height: 100rpx;
+		border-radius:10rpx;
+		text-align: center;
+		font-size: $uni-font-size-f5;
+		color: $uni-text-color-inverse;
+		background: $uni-bg-color;
+		// margin: 0 auto;
+	}
+}

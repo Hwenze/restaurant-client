@@ -1,0 +1,418 @@
+@charset "UTF-8";
+
+$browser-default-font-size: 37.5px !default;
+$text-red:#f2214d;
+$round: 0!default;
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default;
+$pink:#FF7372;
+$black:#4A4A4A;
+
+// 弹性布局-两端居中对齐
+@mixin vertical-sides() {
+    display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+@mixin rounded($amount) {
+    -moz-border-radius: $amount;
+    -webkit-border-radius: $amount;
+    border-radius: $amount;
+}
+
+@mixin pxRadius($color, $radius) {
+    border: 1px solid $color;
+    @include rounded($radius);
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+@mixin pxBorder($color) {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2rpx solid $color;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+}
+
+
+@mixin pxBorderLeftRight($color,$position) {
+  content: " ";
+  position: absolute;
+  #{$position}: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  border-#{$position}: 1px solid $color;
+  color: $color;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+@mixin pxBorderTopBottom($color,$position) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  #{$position}: -1px;
+  width: 100%;
+  height: 1px;
+  border-#{$position}: 1px solid $color;
+  color: $color;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+@mixin WHLH($width, $height) {
+    width: $width;
+    height: $height;
+    text-align: center;
+    line-height: $height;
+}
+
+@mixin tranformCenter() {
+    left: 50%;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+}
+
+@mixin WH($width) {
+    width: $width;
+    height: $width;
+}
+
+@mixin autoCenter {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+@mixin rounder-side($tl, $tr, $bl, $br) {
+    -moz-border-radius: $tl $tr $bl $br;
+    -webkit-border-radius: $tl $tr $bl $br;
+    border-radius: $tl $tr $bl $br;
+}
+
+@mixin buttonRadius($tl) {
+    -moz-border-radius: $tl;
+    -webkit-border-radius: $tl;
+    border-radius: $tl;
+}
+
+@mixin height($height) {
+    height: $height;
+    line-height: $height;
+}
+
+@mixin skewX($degrees) {
+    @include prefixer(transform, skewX($degrees), webkit moz o ms spec);
+    -webkit-backface-visibility: hidden;
+}
+
+@mixin wordEllipsisNum($lineNum) {
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lineNum;
+    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    /* autoprefixer: on */
+}
+
+// 单行溢出隐藏
+@mixin wordEllipsis() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin triangleArrowup($tb, $lr, $color) {
+    border-top: $tb solid transparent;
+    border-bottom: $tb solid $color;
+    border-left: $lr solid transparent;
+    border-right: $lr solid transparent;
+}
+
+//switch button
+@mixin switch_code($width, $height, $background) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    width: $width;
+    height: $height;
+    //border: 1px solid #d9d9d9;
+    outline: 0;
+    border-radius: $height/2;
+    box-sizing: border-box;
+    background: #d9d9d9;
+    cursor: pointer;
+    &:after {
+        width: $height;
+        height: $height;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+        content: " ";
+        top: 0;
+        left: 1px;
+        position: absolute;
+        -webkit-transition: -webkit-transform .3s;
+        transition: -webkit-transform .3s;
+        transition: transform .3s;
+        transition: transform .3s, -webkit-transform .3s;
+        border-radius: $height;
+    }
+    &:before {
+        width: $width;
+        height: $height;
+        background-color: #d9d9d9;
+        content: " ";
+        top: 0;
+        left: 0;
+        position: absolute;
+        -webkit-transition: -webkit-transform .3s;
+        transition: -webkit-transform .3s;
+        transition: transform .3s;
+        transition: transform .3s, -webkit-transform .3s;
+        border-radius: $height/2;
+    }
+    &:checked {
+        border-color: $background;
+        background-color: $background;
+        &:before {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        &:after {
+            -webkit-transform: translateX($width - $height);
+            transform: translateX($width - $height);
+        }
+    }
+}
+
+//select button
+@mixin checkbox_core($color, $WH, $round) {
+    font-family: "Ionicons";
+    font-style: normal;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    position: relative;
+    width: $WH;
+    height: $WH;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: $WH;
+    cursor: pointer;
+    @include rounded($round);
+    &:after {
+        display: inline-block;
+        content: ' ';
+        width: 100%;
+        height: 100%;
+        background: $color;
+        @include rounded($round);
+        -webkit-transition: .1s linear;
+        transition: .1s linear;
+        opacity: 0;
+    }
+    &:before {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        content: '\f3fd';
+        color: #fff;
+        -webkit-transition: .1s linear;
+        transition: .1s linear;
+        opacity: 0;
+    }
+    &:hover {
+        border-color: $color;
+    }
+    &:checked {
+        font-size: $WH+4px;
+        border: none;
+        &:after {
+            opacity: 1;
+            -webkit-transition: .1s linear;
+            transition: .1s linear;
+        }
+        &:before {
+            -webkit-transition: .1s linear;
+            transition: .1s linear;
+            opacity: 1;
+        }
+    }
+}
+
+//radio button
+@mixin radio_core($background, $WH) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    position: relative;
+    width: $WH;
+    height: $WH;
+    font-size: 0;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    &:hover {
+        border-color: $background;
+    }
+    &:checked {
+        background-color: #fff;
+        border-color: $background;
+    }
+    &:after {
+        content: " ";
+        border-radius: 100%;
+        width: $WH*0.5;
+        height: $WH*0.5;
+        display: inline-block;
+        margin-top: 50%;
+        transform: translate(0, -50%);
+    }
+    &:checked {
+        -webkit-animation-name: layui-scale-spring;
+        animation-name: layui-scale-spring;
+        &:after {
+            background-color: $background;
+        }
+    }
+}
+
+@mixin round_close($fontSize) {
+    position: relative;
+    display: inline-block;
+    font-family: "Ionicons";
+    font-style: normal;
+    vertical-align: middle;
+    line-height: $fontSize;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:after {
+        display: inline-block;
+        content: " ";
+        background: #d80404;
+        width: $fontSize;
+        height: $fontSize;
+        @include rounded(100%);
+    }
+    &:before {
+        position: absolute;
+        display: inline-block;
+        width: $fontSize;
+        height: $fontSize;
+        content: "\f404";
+        font-size: $fontSize;
+        line-height: $fontSize;
+        color: #fff;
+    }
+}
+
+@mixin checkbox_custom($fontFamily, $fontSize, $content, $contentChecked, $color, $colorChecked) {
+    font-family: $fontFamily;
+    font-style: normal;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    position: relative;
+    width: $fontSize;
+    height: $fontSize;
+    line-height: $fontSize;
+    &:after {
+        display: inline-block;
+        content: $content;
+        color: $color;
+        font-size: $fontSize;
+        -webkit-transition: .1s linear;
+        transition: .1s linear;
+    }
+    &:checked {
+        font-size: $fontSize;
+        &:after {
+            content: $contentChecked;
+            color: $colorChecked;
+            -webkit-transition: .1s linear;
+            transition: .1s linear;
+        }
+    }
+}
+@mixin flex() {
+	display: -webkit-box;
+	/* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;
+	/* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;
+	/* TWEENER - IE 10 */
+	display: -webkit-flex;
+	/* NEW - Chrome */
+	display: flex;
+}
+
+@mixin flex-1() {
+	-webkit-box-flex: 1;
+	/* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;
+	/* OLD - Firefox 19- */
+	width: 20%;
+	/* For old syntax, otherwise collapses. */
+	-webkit-flex: 1;
+	/* Chrome */
+	-ms-flex: 1;
+	/* IE 10 */
+	flex: 1;
+	/* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+@mixin verticle-center() {
+	display: flex;
+	// justify-items: center;
+	align-items: center;
+}
