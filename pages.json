@@ -39,6 +39,12 @@
 			"style": {
 				"navigationBarTitleText": "用户协议"
 			}
+		},
+		{
+			"path": "pages/activity_consultation",
+			"style": {
+				"navigationBarTitleText": "活动资讯"
+			}
 		}
 	],
 	"globalStyle": {

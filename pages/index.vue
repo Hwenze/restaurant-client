@@ -34,7 +34,7 @@
 				<text>最新资讯</text>
 				<!-- <image class="right-icon" src="@/static/image/right_icon.png"></image> -->
 			</view>
-			<view class="card-list" v-for="(item, index) in 5" :key="index" @click="toUrl('/pages/user_agreement')">
+			<view class="card-list" v-for="(item, index) in 5" :key="index" @click="toUrl('/pages/activity_consultation')">
 				<image class="pic" src="http://iph.href.lu/168x168" mode="scaleToFill"></image>
 				<p class="title">最新资讯最新资讯</p>
 				<view class="content">

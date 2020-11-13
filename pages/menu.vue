@@ -41,7 +41,7 @@
 		</view>
 		
 		<!-- 菜品详情弹窗 -->
-		<view class="dishes-details" v-show="isShowdetails" @click="isShowdishes = false">
+		<view class="dishes-details" v-show="isShowdetails">
 			<view class="details-box">
 				<view class="dishes-bg">
 					<image class="pic" src="http://iph.href.lu/420x414"></image>
@@ -66,7 +66,7 @@
 		</view>
 		
 		<!-- 已选菜品弹窗 -->
-		<view class="selected-dishes" v-show="isShowdishes">
+		<view class="selected-dishes" v-show="isShowdishes" @click="isShowdishes = false">
 			<view class="list-box">
 				<view class="choose-empty">
 					<text class="title">已选菜品</text>
