@@ -14,6 +14,31 @@
 			"style": {
 				"navigationBarTitleText": "菜单"
 			}
+		},
+		{
+			"path": "pages/confirm_order",
+			"style": {
+				"navigationBarTitleText": "确认订单"
+			}
+		},
+		{
+			"path": "pages/order_list",
+			"style": {
+				"navigationBarTitleText": "订单列表",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/order_details",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/user_agreement",
+			"style": {
+				"navigationBarTitleText": "用户协议"
+			}
 		}
 	],
 	"globalStyle": {

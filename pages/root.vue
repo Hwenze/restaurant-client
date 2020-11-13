@@ -28,11 +28,11 @@
 		<view class="foot-fixed" id="footer">
 			<view class="item-foot" @click="tabChange(0)">
 				<view class="icon index" :class="[type === 0 ? 'index_act' : '']"></view>
-				<p :class="[type === 0 ? 'active' : '']">首页</p>
+				<text :class="[type === 0 ? 'active' : '']">首页</text>
 			</view>
 			<view class="item-foot" @click="tabChange(1)">
 				<view class="icon personal" :class="[type === 1 ? 'personal_act' : '']"></view>
-				<p :class="[type === 1 ? 'active' : '']">个人中心</p>
+				<text :class="[type === 1 ? 'active' : '']">个人中心</text>
 			</view>
 		</view>
 	</view>
@@ -50,7 +50,6 @@ export default {
 		};
 	},
 	onLoad(params) {
-		console.log(111);
 		let that = this;
 		
 		uni.$on('updateType', function(data){
@@ -58,9 +57,6 @@ export default {
 		})
 	},
 	onShow() {
-		// console.log(222)
-	},
-	mounted() {
 
 	},
 	methods: {

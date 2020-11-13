@@ -1,0 +1,45 @@
+.order_list{
+	width: 100%;
+	height: 100%;
+	background-color: $uni-bg-color-grey;
+	
+	.list-box{
+		padding: 21.81rpx;
+		
+		.list{
+			padding: 30rpx;
+			background-color: $uni-bg-color;
+			font-size: $uni-font-size-f6;
+			overflow: hidden;
+			border-radius: 12rpx;
+			mix-height: 162rpx;
+			margin-bottom: 30rpx;
+			
+			.good-pic {
+				overflow: hidden;
+				border-radius: 8rpx;
+				flex-shrink: 0;
+				width: 140rpx;
+				height: 140rpx;
+				margin-right: 15rpx;
+				background-color: $uni-pic-bg;
+			}
+			
+			.good-right{
+				
+				.ellipsis2 {
+					width: 100%;
+					color: $uni-text-color;
+					font-size: $uni-font-size-f5;
+					@include wordEllipsisNum(2);
+					margin-bottom: 18px;
+				}
+				
+				.time{
+					color: $uni-text-color;
+					font-size: $uni-font-size-f5;
+				}
+			}
+		}
+	}
+}

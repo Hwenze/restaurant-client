@@ -22,7 +22,7 @@
 						<text class="introduce">大家喜欢吃，才叫真好吃</text>
 					</view>
                     <view class="item-container">
-                        <view class="item" v-for="(item, index) of [1,2,3,4,5]" :key="index">
+                        <view class="item" v-for="(item, index) of [1,2,3,4,5]" :key="index" @click="openDetails()">
                             <image class="food-pic" src="../static/image/index_icon_act.png" mode="scaleToFill"></image>
 							<view class="content">
 								<text class="title">可口可乐{{listIndex}}-{{index}}</text>
@@ -32,7 +32,12 @@
 										<text class="price">￥2.88</text>
 										<text class="original-price">￥33.98</text>
 									</view>
-									<image class="icon" src="../static/image/add.png"></image>
+									<view class="icon-box">
+										<image class="icon" src="../static/image/reduce.png"></image>
+										<text class="num">99</text>
+										<image class="icon" src="../static/image/add.png"></image>
+									</view>
+									
 								</view>
 							</view>
 						</view>
@@ -50,7 +55,12 @@ export default {
         topDistance:{
             type: Number,
             default:0
-        }
+        },
+		
+		isShowdetails:{
+            type: Boolean,
+            default: false
+        },
     },
     data() {
         return {
@@ -67,14 +77,15 @@ export default {
 	    })
 	},
     methods:{
-        init(){
+        init: function(){
             const query = uni.createSelectorQuery().in(this);
             query.selectAll('#list-container .list').boundingClientRect(data => {
                 // console.log(data);
                 this.nodeInfoList = data;
             }).exec()
         },
-        handleClickNav(nav){
+		
+        handleClickNav: function(nav){
             if(!this.isTouchScrollView&&this.clickedNavIndex == nav) return;
             // 锁定联动
             this.isTouchScrollView = false;
@@ -87,7 +98,8 @@ export default {
                 this.viewNavIndex = nav;
             })
         },
-        handleListScroll(e){
+		
+        handleListScroll: function(e){
             if(!this.isTouchScrollView) return;
             let scrollTop = this.scrollTop = e.detail.scrollTop;
             // console.log("scrollTop: " + scrollTop);
@@ -97,9 +109,15 @@ export default {
             // console.log(currentNavIndex);
             this.viewNavIndex = currentNavIndex;
         },
+		
         handleTouchScrollView(){
             this.isTouchScrollView = true;
         },
+		
+		// 打开菜品详情
+		openDetails: function(){
+			this.$emit('openDetails', !this.isShowdetails);
+		}
     }
 }
 </script>
@@ -176,13 +194,13 @@ export default {
 				
 				.item{
 					width: 100%;
-					height: 166rpx;
+					height: 150rpx;
 					margin: 20rpx 0;
 					@include vertical-sides();
 					
 					.food-pic{
-						width: 166rpx;
-						height: 166rpx;
+						width: 150rpx;
+						height: 150rpx;
 					}
 					
 					.content{
@@ -199,12 +217,12 @@ export default {
 							display: block;
 							color: $uni-text-color-grey;
 							font-size: $uni-font-size-f6;
-							margin-top: 15rpx;
+							margin-top: 16rpx;
 							@include wordEllipsis();
 						}
 						
 						.other{
-							margin-top: 7rpx;
+							margin-top: 10rpx;
 							@include vertical-sides();
 							
 							.price-box{
@@ -219,13 +237,23 @@ export default {
 									color: $uni-text-color-grey;
 									font-size: $uni-font-size-f5;
 									text-decoration: line-through;
-									margin-left: 20rpx;
+									margin-left: 15rpx;
 								}
 							}
+							
+							.icon-box{
+								width: 150rpx;
+								@include vertical-sides();
 								
-							.icon{
-								width: 68rpx;
-								height: 68rpx;
+								.icon{
+									width: 48rpx;
+									height: 48rpx;
+								}
+								
+								.num{
+									color: $uni-text-color;
+									font-size: $uni-font-size-f4;
+								}
 							}
 						}
 					}

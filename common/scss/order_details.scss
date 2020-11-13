@@ -1,0 +1,67 @@
+.order_details{
+	width: 100%;
+	height: 100%;
+	background-color: $uni-bg-color-grey;
+	
+	
+	.shop-box {
+		margin: $uni-spacing-col-lg $uni-spacing-row-lg 0 $uni-spacing-row-lg;
+		padding: $uni-spacing-col-lg $uni-spacing-row-lg;
+		background: $uni-color-primary;
+		border-radius: 10rpx;
+		height: 162rpx;
+		
+		.name {
+			height: 120rpx;
+			line-height: 120rpx;
+			color:$uni-white-color;
+			font-size: $uni-font-size-f4;
+		}
+		
+		.shopimg {
+			width: 120rpx;
+			height: 120rpx;
+			border-radius: 8rpx;
+		}
+	}
+	
+	.list-box{
+		padding: 21.81rpx;
+	}
+	
+	.list{
+		padding: 30rpx;
+		background-color: $uni-bg-color;
+		font-size: $uni-font-size-f6;
+		overflow: hidden;
+		border-radius: 12rpx;
+		mix-height: 162rpx;
+		margin-bottom: 30rpx;
+		
+		.good-pic {
+			overflow: hidden;
+			border-radius: 8rpx;
+			flex-shrink: 0;
+			width: 140rpx;
+			height: 140rpx;
+			margin-right: 15rpx;
+			background-color: $uni-pic-bg;
+		}
+		
+		.good-right{
+			
+			.ellipsis2 {
+				width: 100%;
+				color: $uni-text-color;
+				font-size: $uni-font-size-f5;
+				@include wordEllipsisNum(2);
+				margin-bottom: 18px;
+			}
+			
+			.time{
+				color: $uni-text-color;
+				font-size: $uni-font-size-f5;
+			}
+		}
+	}
+}

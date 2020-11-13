@@ -15,6 +15,9 @@
 /* uni.scss */
 @import "uview-ui/theme.scss";
 
+/* 公共方法 */
+@import "./common/scss/tool.scss";
+
 /* 行为相关颜色 */
 $uni-color-primary: #FF8242; //主体颜色
 $uni-color-success: #10BA95; //支付成功提示颜色，辅助按钮底色
@@ -99,3 +102,8 @@ $uni-color-paragraph: #3f536e; // 文章段落颜色
 $uni-font-size-paragraph: 30rpx;
 $uni-color-paragraph: #3F536E; // 文章段落颜色
 $uni-font-size-paragraph:30rpx;
+
+$api: '/';
+@function bg($url){
+  @return $api + $url;
+}

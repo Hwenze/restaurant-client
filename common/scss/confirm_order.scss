@@ -1,0 +1,146 @@
+.confirm_order{
+	width: 100%;
+	min-height: 100%;
+	position: relative;
+	background-color: #F6F8F9;
+	padding-bottom: 110rpx;
+	
+	.bg{
+		width: 100%;
+		height: 363.63rpx;
+		background-image: linear-gradient(to bottom, #FF8242 , white);
+		position: absolute;
+		top: 0;
+		z-index: 1;
+	}
+	
+	.order-box{
+		position: relative;
+		z-index: 2;
+		padding: 27.27rpx 14.54rpx 0;
+		
+		.order-list{
+			padding: 36.36rpx;
+			background-color: $uni-bg-color;
+			box-shadow:0px 0px 8rpx rgba(243, 243, 243, 1);
+			
+			.title{
+				display: block;
+				color: $uni-text-color;
+				font-size: $uni-font-size-f3;
+				font-weight: bold;
+				margin-bottom: 30rpx;
+				@include wordEllipsis();
+			}
+			
+			.list{
+				padding: 15rpx 0;
+				border-top: 2rpx solid $uni-text-color-disable;
+				@include vertical-sides();
+				
+				.list-left{
+					@include vertical-sides();
+					justify-content: center;
+					
+					image{
+						width: 118.18rpx;
+						height: 118.18rpx;
+					}
+					
+					.name{
+						width: 290.9rpx;
+						display: block;
+						color: $uni-text-color-inverse;
+						font-size: $uni-font-size-f4;
+						font-weight: bold;
+						@include wordEllipsis();
+						margin-left: 15rpx;
+					}
+					
+					.num{
+						color: $uni-text-color-inverse;
+						font-size: $uni-font-size-f5;
+						font-weight: bold;
+						margin-left: 15rpx;
+					}
+				}
+				
+				.price{
+					color: $uni-text-color-inverse;
+					font-size: $uni-font-size-f4;
+					font-weight: bold;
+				}
+			}
+			
+			.subtotal{
+				border-top: 2rpx solid $uni-text-color-disable;
+				display: block;
+				color: $uni-text-color-inverse;
+				font-size: $uni-font-size-f3;
+				padding-top: 30rpx;
+				font-weight: bold;
+				text-align: right;
+				
+				.total-price{
+					font-size: $uni-font-size-f1;
+				}
+			}
+		}
+	}
+	
+	.other-box{
+		padding: 27.27rpx;
+		background-color: $uni-bg-color;
+		box-shadow:0px 0px 8rpx rgba(243, 243, 243, 1);
+		margin: 18.18rpx 14.54rpx 0;
+		
+		.other-list{
+			@include vertical-sides();
+			
+			.title{
+				color: $uni-text-color;
+				font-size: $uni-font-size-f5;
+				font-weight: bold;
+			}
+			
+			input{
+				width: 450rpx;
+				text-align: right;
+				color: $uni-text-color;
+				font-size: $uni-font-size-f5;
+			}
+		}
+	}
+	
+	.settlement{
+		width: 100%;
+		height: 98rpx;
+		position: fixed;
+		z-index: 3;
+		bottom: 0;
+		background-color: #505052;
+		@include vertical-sides();
+		
+		.price{
+			color: $uni-white-color;
+			font-size: $uni-font-size-f2;
+			margin-left: 14.54rpx;
+		}
+		
+		.operation{
+			width: 200rpx;
+			height: 98rpx;
+			text-align: center;
+			line-height: 98rpx;
+			color: $uni-text-color-inverse;
+			
+			&.active{
+				background-color: $uni-color-primary;
+				font-size: $uni-font-size-f5;
+				font-weight: bold;
+				color: $uni-white-color;
+			}
+		}
+	}
+	
+}
