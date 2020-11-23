@@ -19,7 +19,7 @@
 @import "./common/scss/tool.scss";
 
 /* 行为相关颜色 */
-$uni-color-primary: #FF8242; //主体颜色
+$uni-color-primary: #01b6fc; //主体颜色
 $uni-color-success: #10BA95; //支付成功提示颜色，辅助按钮底色
 $uni-color-warning: #fcb93c; //次级按钮底色，提示信息文字颜色
 $uni-color-error: #DD361C; //警示提示信息文字颜色
@@ -103,6 +103,7 @@ $uni-font-size-paragraph: 30rpx;
 $uni-color-paragraph: #3F536E; // 文章段落颜色
 $uni-font-size-paragraph:30rpx;
 
+/* 为了小程序CSS转译base64 */
 $api: '/';
 @function bg($url){
   @return $api + $url;
