@@ -964,6 +964,10 @@ input[disabled] {
 		color: $uni-text-color-grey;
 		font-size: $uni-font-size-f6;
 		@include vertical-sides();
+		
+		.more{
+			color: $uni-color-primary;
+		}
 	}
 }
 

@@ -7,7 +7,7 @@
 				<image class="user-pic" src="http://iph.href.lu/168x168" mode="scaleToFill"></image>
 				<view class="user-info">
 					<p class="name">{{ details.user.username }}</p>
-					<p class="user-id">ID {{ details.user.id }}</p>
+					<p class="user-id">会员</p>
 				</view>
 			</view>
 		</view>

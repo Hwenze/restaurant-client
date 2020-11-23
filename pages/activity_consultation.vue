@@ -9,17 +9,14 @@
 			<template slot="header">
 				<view class="header">
 					<view class="left-btn" @click="back()"><i class="iconfont icon-houtui gray6 f36 "></i></view>
-					<view class="header-txt">活动资讯</view>
+					<view class="header-txt">{{datas.title}}</view>
 					<view class="right-btn"></view>
 				</view>
 			</template>
 		</fixed-header>
 	<!-- #endif -->
 	
-		<view class="agreement" v-html="details">
-			
-		</view>
-	
+		<view class="agreement" v-html="datas.content"></view>
 		
 	</view>
 </template>
@@ -28,14 +25,36 @@
 export default {
 	data() {
 		return {
-			details: '活动资讯活动资讯活动资讯',
+			id: '',
+			datas: {
+				title: '',
+				content: '',
+			},
 		};
 	},
-	mounted() {
-		
+	onLoad: function(options) {
+		this.id = options.id;
+		this.getRealTimeDateils();
 	},
 	methods: {
+		getRealTimeDateils: function(){
+			const that = this;
 		
+			that.tools.ajax({
+				url: '/activity/getRealTimeDateils',
+				type: 'GET',
+				ajaxData: {
+					id: that.id
+				},
+				successFun: function(res, errMsg) {
+					console.log(res)
+					that.datas = res.data;
+				},
+				errorFun: function(errorData, status, headers, errorObj) {
+					that.tools.alert.toast(errorData.error_msg);
+				}
+			});
+		},
 	},
 	filters: {
 		

@@ -41,9 +41,16 @@
 			}
 		},
 		{
+			"path": "pages/activity_list",
+			"style": {
+				"navigationBarTitleText": "活动资讯",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/activity_consultation",
 			"style": {
-				"navigationBarTitleText": "活动资讯"
+				"navigationBarTitleText": "资讯详情"
 			}
 		}
 	],

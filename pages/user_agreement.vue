@@ -28,14 +28,28 @@
 export default {
 	data() {
 		return {
-			details: '用户协议用户协议用户协议用户协议',
+			details: '',
 		};
 	},
 	mounted() {
-		
+		this.getAgreement();
 	},
 	methods: {
+		getAgreement: function(){
+			const that = this;
 		
+			that.tools.ajax({
+				url: '/api/getAgreement',
+				type: 'GET',
+				ajaxData: {},
+				successFun: function(res, errMsg) {
+					that.details = res.data.agreement;
+				},
+				errorFun: function(errorData, status, headers, errorObj) {
+					that.tools.alert.toast(errorData.error_msg);
+				}
+			});
+		}
 	},
 	filters: {
 		

@@ -3,6 +3,16 @@
 	height: 100%;
 	background-color: $uni-bg-color-grey;
 	
+	.list_swiper {
+		width: 100%;
+		height: 100%;
+		overflow-y: scroll;
+	
+		uni-swiper-item {
+			overflow-y: scroll;
+		}
+	}
+	
 	.list-box{
 		padding: 21.81rpx;
 		

@@ -5,8 +5,8 @@
 			<view class="page-section swiper">
 				<view class="page-section-spacing">
 					<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="500" :indicator-active-color="'#FFFFFF'">
-						<swiper-item v-for="(item, index) in 3" :key="index">
-							<image class="shuffling" src="http://iph.href.lu/168x168" mode="scaleToFill"></image>
+						<swiper-item v-for="(item, index) in rotaList" :key="index">
+							<image class="shuffling" :src="item.picture" mode="scaleToFill"></image>
 						</swiper-item>
 					</swiper>
 				</view>
@@ -14,7 +14,7 @@
 		</view>
 
 		<!-- 热门菜品 -->
-		<view class="hot-goods">
+		<!-- <view class="hot-goods">
 			<view class="title" @click="toUrl('/pages/menu')">
 				<text>热门菜品</text>
 				<image class="right-icon" src="@/static/image/right_icon.png"></image>
@@ -26,20 +26,20 @@
 					<text class="goods-price">33.33元</text>
 				</view>
 			</view>
-		</view>
+		</view> -->
 
-		<!-- 最新资讯 -->
+		<!-- 活动资讯 -->
 		<view class="information">
-			<view class="title">
-				<text>最新资讯</text>
-				<!-- <image class="right-icon" src="@/static/image/right_icon.png"></image> -->
+			<view class="title" @click="toUrl('/pages/activity_list')">
+				<text>活动资讯</text>
+				<image class="right-icon" src="@/static/image/right_icon.png"></image>
 			</view>
-			<view class="card-list" v-for="(item, index) in 5" :key="index" @click="toUrl('/pages/activity_consultation')">
-				<image class="pic" src="http://iph.href.lu/168x168" mode="scaleToFill"></image>
-				<p class="title">最新资讯最新资讯</p>
+			<view class="card-list" v-for="(item, index) in realtimeList" :key="index" @click="toUrl('/pages/activity_consultation', {id: item.id})">
+				<image class="pic" :src="item.picture" mode="scaleToFill"></image>
+				<p class="title">{{item.title}}</p>
 				<view class="content">
-					<text>412412人阅读</text>
-					<text>2020-11-13</text>
+					<text>{{item.star_time}}-{{item.end_time}}</text>
+					<text class="more">详情</text>
 				</view>
 			</view>
 		</view>
@@ -50,14 +50,55 @@
 export default {
 	data() {
 		return {
-			
+			rotaList: [], 		// 轮播图
+			realtimeList: [], 	// 活动资讯
 		};
 	},
 	mounted() {
-
+		this.rotationFn();
+		this.getRealTimeInfo();
 	},
 	methods: {
+		// 获取轮播图数据
+		rotationFn: function(){
+			const that = this;
+
+			that.tools.ajax({
+				url: '/api/getHomeRotation',
+				type: 'GET',
+				ajaxData: {},
+				successFun: function(res, errMsg) {
+					that.rotaList = res.data;
+				},
+				errorFun: function(errorData, status, headers, errorObj) {
+					that.tools.alert.toast(errorData.error_msg);
+				}
+			});
+		},
 		
+		// 获取活动资讯数据
+		getRealTimeInfo: function(){
+			const that = this;
+
+			that.tools.ajax({
+				url: '/activity/getRealTimeInfo',
+				type: 'GET',
+				ajaxData: {
+					current: 1,
+					pageSize: 6,
+				},
+				successFun: function(res, errMsg) {
+					that.realtimeList = res.data.list;
+					that.realtimeList.forEach((item)=>{
+						item.star_time = that.tools.formateDate(item.star_time, 'YYYY-MM-DD');
+						item.end_time = that.tools.formateDate(item.end_time, 'YYYY-MM-DD');
+					})
+				},
+				errorFun: function(errorData, status, headers, errorObj) {
+					that.tools.alert.toast(errorData.error_msg);
+				}
+			});
+		},
 	},
 	filters: {
 		

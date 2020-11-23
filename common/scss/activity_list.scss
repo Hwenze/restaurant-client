@@ -1,0 +1,15 @@
+.activity-box {
+	width: 100%;
+	height: 100%;
+	background: $uni-bg-color;
+
+	.activity-lists-box {
+		padding: 0 25rpx 30rpx;
+		
+		.card-item{
+			margin-top: 0;
+			padding: 15rpx 0;
+			border-bottom: 1rpx solid $uni-text-color-disable;
+		}
+	}
+}
