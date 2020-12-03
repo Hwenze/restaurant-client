@@ -43,6 +43,129 @@
 		position: relative;
 		margin-top: 20rpx;
 		padding-bottom: 98rpx;
+		
+		.container{
+			display: flex;
+			height: calc(100vh - var(--window-top));
+			
+			.nav-list{
+				width: 160rpx;
+				overflow-y: auto;
+				overflow-x: hidden;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				font-size: $uni-font-size-f5;
+				background-color: $uni-text-color-placeholder;
+				
+				&::-webkit-scrollbar{
+					width: 0;
+					height: 0;
+					background: transparent;
+				}
+				
+				.nav-item{
+					width: 100%;
+					padding: 40rpx 0;
+					text-align: center;
+					transition: transform .1s linear;
+					
+					&.active{
+						color: $uni-color-primary;
+						transform-origin: center center;
+						transform: scale(1.2);
+						background-color: $uni-bg-color;
+						font-weight: bold;
+					}
+				}
+			}
+			    
+			.list-wrapper{
+				flex: 1;
+				position: relative;
+				
+				.list-container{
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					padding: 0 32rpx;
+					box-sizing: border-box;
+					
+					.list-title{
+						height: 88rpx;
+						line-height: 88rpx;
+						
+						.name{
+							color: $uni-text-color;
+							font-size: $uni-font-size-f5;
+						}
+						
+						.introduce{
+							color: $uni-text-color-grey;
+							font-size: $uni-font-size-f6;
+							margin-left: 15rpx;
+						}
+					}
+					    
+					.item-container{
+						
+						.item{
+							width: 100%;
+							height: 150rpx;
+							margin: 20rpx 0;
+							@include vertical-sides();
+							
+							.food-pic{
+								width: 150rpx;
+								height: 150rpx;
+							}
+							
+							.content{
+								width: 363rpx;
+								
+								.title{
+									display: block;
+									color: $uni-text-color;
+									font-size: $uni-font-size-f4;
+									@include wordEllipsis();
+								}
+								
+								.introduce{
+									display: block;
+									color: $uni-text-color-grey;
+									font-size: $uni-font-size-f6;
+									margin-top: 16rpx;
+									@include wordEllipsis();
+								}
+								
+								.other{
+									margin-top: 10rpx;
+									@include vertical-sides();
+									
+									.price-box{
+										
+										.price{
+											color: $uni-color-primary;
+											font-size: $uni-font-size-f4;
+											font-weight: bold;
+										}
+										
+										.original-price{
+											color: $uni-text-color-grey;
+											font-size: $uni-font-size-f5;
+											text-decoration: line-through;
+											margin-left: 15rpx;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	.shopping-cart{

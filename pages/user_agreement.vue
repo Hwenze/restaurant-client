@@ -46,7 +46,7 @@ export default {
 					that.details = res.data.agreement;
 				},
 				errorFun: function(errorData, status, headers, errorObj) {
-					that.tools.alert.toast(errorData.error_msg);
+					that.tools.alert.toast(errorData.msg);
 				}
 			});
 		}

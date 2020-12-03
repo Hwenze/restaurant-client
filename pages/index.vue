@@ -13,20 +13,20 @@
 			</view>
 		</view>
 
-		<!-- 热门菜品 -->
-		<!-- <view class="hot-goods">
+		<!-- 热门店铺 -->
+		<view class="hot-goods">
 			<view class="title" @click="toUrl('/pages/menu')">
-				<text>热门菜品</text>
+				<text>热门店铺</text>
 				<image class="right-icon" src="@/static/image/right_icon.png"></image>
 			</view>
-			<view class="goods" v-for="(item, index) in 3" :key="index">
+			<view class="goods" v-for="(item, index) in 1" :key="index">
 				<image class="goods-pic" src="http://iph.href.lu/168x168" mode="scaleToFill"></image>
 				<view class="goods-info">
 					<text class="goods-name">娃哈哈娃哈哈</text>
 					<text class="goods-price">33.33元</text>
 				</view>
 			</view>
-		</view> -->
+		</view>
 
 		<!-- 活动资讯 -->
 		<view class="information">
@@ -38,7 +38,7 @@
 				<image class="pic" :src="item.picture" mode="scaleToFill"></image>
 				<p class="title">{{item.title}}</p>
 				<view class="content">
-					<text>{{item.star_time}}-{{item.end_time}}</text>
+					<text>{{item.star_time}} ~ {{item.end_time}}</text>
 					<text class="more">详情</text>
 				</view>
 			</view>
@@ -71,7 +71,7 @@ export default {
 					that.rotaList = res.data;
 				},
 				errorFun: function(errorData, status, headers, errorObj) {
-					that.tools.alert.toast(errorData.error_msg);
+					that.tools.alert.toast(errorData.msg);
 				}
 			});
 		},
@@ -95,7 +95,7 @@ export default {
 					})
 				},
 				errorFun: function(errorData, status, headers, errorObj) {
-					that.tools.alert.toast(errorData.error_msg);
+					that.tools.alert.toast(errorData.msg);
 				}
 			});
 		},
