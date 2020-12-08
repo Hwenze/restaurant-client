@@ -32,7 +32,7 @@
 									<view class="flex-1">{{item.order_id}}</view>
 								</view>
 								<view class="flex mb15">
-									<image class="good-pic" src="http://iph.href.lu/168x168" mode="scaleToFill"></image>
+									<image class="good-pic" :src="item.shop_avatar" mode="scaleToFill"></image>
 									<view class="good-right flex-column">
 										<view class="flex-1 ellipsis2">{{item.nickname}}</view>
 										<view class="flex">

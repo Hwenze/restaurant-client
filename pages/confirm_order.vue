@@ -21,7 +21,7 @@
 
 			<view class="order-box">
 				<view class="order-list">
-					<text class="title">{{orderData.shop.name}}</text>
+					<text class="title">{{orderData.shop.shop_name}}</text>
 					<view class="list" v-for="(item, index) in orderData.list" :key="index">
 						<view class="list-left">
 							<image :src="item.banner" mode="scaleToFill"></image>
@@ -92,7 +92,7 @@
 					url: '/order/confirmOrder',
 					type: 'POST',
 					ajaxData: {
-						shop_id: 1,
+						shop_id: this.params.shop_id,
 						table_num: 1,
 						goods
 					},

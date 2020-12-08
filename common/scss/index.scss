@@ -17,7 +17,7 @@
 		}
 	}
 	
-	.hot-goods{
+	.hot-shop{
 		margin-top: 40rpx;
 		
 		.title{
@@ -30,28 +30,33 @@
 			}
 		}
 		
-		.goods{
+		.shop{
 			margin-top: 20rpx;
+			box-shadow: 0rpx 0rpx 6rpx rgba(0,0,0,0.16);
+			border-radius:10rpx;
 			
-			.goods-pic{
+			.shop-pic{
 				width:700rpx;
 				height:300rpx;
 				background:$uni-pic-bg;
 				border-radius:10rpx;
 			}
 			
-			.goods-info{
+			.shop-info{
 				padding: 15rpx 20rpx 0;
-				@include vertical-sides();
 				
-				.goods-name{
-					font-size: $uni-font-size-f5;
-					color: #293141;
+				.shop-name{
+					display: block;
+					font-size: $uni-font-size-f3;
+					color: $uni-text-color;
+					@include wordEllipsis();
 				}
 				
-				.goods-price{
+				.shop-desc{
+					display: block;
 					font-size: $uni-font-size-f5;
-					color: $uni-text-color;
+					color: $uni-text-color-inverse;
+					@include wordEllipsis();
 				}
 			}
 		}

@@ -19,9 +19,9 @@
 			<!-- 店铺信息 -->
 			<view class="shop-box flex">
 				<view class="flex-column flex-1">
-					<view class="name">hahahahah</view>
+					<view class="name">{{detailsData.shop_name}}</view>
 				</view>
-				<image class="shopimg" src="http://iph.href.lu/168x168" mode="scaleToFill"></image>
+				<image class="shopimg" :src="detailsData.shop_avatar" mode="scaleToFill"></image>
 			</view>
 
 			<!-- 商品列表 -->
@@ -65,7 +65,7 @@
 						<view class="flex-1 count">订单备注</view>
 						<view class="">{{detailsData.remark}}</view>
 					</view>
-					<view class="flex mt15">
+					<view class="flex mt15" v-if="detailsData.pay_time">
 						<view class="flex-1 count">付款时间</view>
 						<view class="">{{detailsData.create_time}}</view>
 					</view>

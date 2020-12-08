@@ -52,6 +52,13 @@
 			"style": {
 				"navigationBarTitleText": "资讯详情"
 			}
+		},
+		{
+			"path": "pages/shop_list",
+			"style": {
+				"navigationBarTitleText": "热门店铺列表",
+				"enablePullDownRefresh": true
+			}
 		}
 	],
 	"globalStyle": {

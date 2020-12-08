@@ -744,6 +744,7 @@ input[disabled] {
 					font-weight: 400;
 					color: $uni-text-color-grey;
 					line-height: 30rpx;
+					@include wordEllipsis();
 				}
 				.item-bottom-time {
 					font-size: $uni-font-size-f7;

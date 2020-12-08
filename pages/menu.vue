@@ -18,9 +18,9 @@
 
 			<!-- 头部 -->
 			<view class="header-box">
-				<view class="header-bg" :style="'background-image: url(' + 'http://iph.href.lu/168x168' + ');'"></view>
-				<view class="header-icon" :style="'background-image: url(' + 'http://iph.href.lu/168x168' + ');'"></view>
-				<view class="header-title">餐厅餐厅</view>
+				<view class="header-bg" :style="'background-image: url(' + shopInfo.shop_background + ');'"></view>
+				<view class="header-icon" :style="'background-image: url(' + shopInfo.shop_avatar + ');'"></view>
+				<view class="header-title">{{shopInfo.shop_name}}</view>
 			</view>
 
 			<!-- 菜单列表 -->
@@ -42,7 +42,7 @@
 								</view>
 								<view class="item-container">
 									<view class="item" v-for="(it, index) of item.productList" :key="'b'+ index">
-										<image class="food-pic" :src="it.banner" mode="scaleToFill" @click="openDetails()"></image>
+										<image class="food-pic" :src="it.banner" mode="scaleToFill" @click="openDetails(it)"></image>
 										<view class="content">
 											<text class="title">{{it.title}}</text>
 											<text class="introduce">{{it.sub_title}}</text>
@@ -78,23 +78,23 @@
 			<view class="dishes-details" v-show="isShowdetails">
 				<view class="details-box">
 					<view class="dishes-bg">
-						<image class="pic" src="http://iph.href.lu/420x414"></image>
+						<image class="pic" :src="details.banner"></image>
 						<image class="icon" src="../static/image/close.png" @click="isShowdetails = false;"></image>
 					</view>
 					<view class="details">
-						<text class="title">可口可乐可口可乐可口可乐可口可乐可口可乐</text>
+						<text class="title">{{details.title}}</text>
 						<view class="operation-box">
 							<view class="price-box">
-								<text class="price">￥72.88</text>
-								<text class="original-price">￥33.98</text>
+								<text class="price">￥{{details.price}}</text>
+								<!-- <text class="original-price">￥33.98</text> -->
 							</view>
 							<view class="icon-box">
-								<image class="icon" src="../static/image/reduce.png"></image>
-								<text class="num">99</text>
-								<image class="icon" src="../static/image/add.png"></image>
+								<image class="icon" :style="'opacity:' + details.num + ';'" @click.stop="detailsNum('reduce')" src="../static/image/reduce.png"></image>
+								<text class="num" :style="'opacity:' + details.num + ';'">{{details.num}}</text>
+								<image class="icon" @click.stop="detailsNum('add')" src="../static/image/add.png"></image>
 							</view>
 						</view>
-						<text class="science">主要原料：牛肉、青菜</text>
+						<text class="science">{{details.sub_title}}</text>
 					</view>
 				</view>
 			</view>
@@ -136,6 +136,8 @@
 	export default {
 		data() {
 			return {
+				params: {},
+				
 				topDistance: 0,
 				list: Array(10).fill(1), //列表数据
 				isTouchScrollView: false,
@@ -143,6 +145,8 @@
 				viewNavIndex: 0,
 				nodeInfoList: [],
 
+				shopInfo: {}, // 店铺信息
+				details: {}, // 弹窗详情
 				categoryList: [], //分类列表 + 商品列表
 				selectedList: [], //已选列表
 				totalPrice: 0, //总价
@@ -151,7 +155,8 @@
 				isShowdishes: false, //是否显示购物车列表
 			};
 		},
-		onLoad() {
+		onLoad(params) {
+			this.params = params;
 			this.$nextTick(function() {
 				this.getProductData();
 				this.init();
@@ -161,7 +166,7 @@
 			this.getCache();
 		},
 		methods: {
-			// 获取商品列表
+			// 获取商品列表和店铺数据
 			getProductData: function() {
 				const that = this;
 				
@@ -170,9 +175,12 @@
 				that.tools.ajax({
 					url: '/product/queryCategoryByAdminId',
 					type: 'GET',
-					ajaxData: {},
+					ajaxData: {
+						shop_id: that.params.shop_id
+					},
 					successFun: function(res, errMsg) {
 						that.tools.alert.closeLoading();
+						that.shopInfo = res.data.shopInfo;
 						res.data.categoryList.forEach((item, index) => {
 							item.productList.forEach((it, idx) => {
 								it.num = 0;
@@ -227,6 +235,17 @@
 				this.productFunc();
 			},
 			
+			// 详情修改菜品数量
+			detailsNum: function(type){
+				if(type === 'add'){
+					this.details.num += 1;
+				}else{
+					this.details.num -= 1;
+				}
+				
+				this.productFunc();
+			},
+			
 			// 清空
 			emptyFunc: function(){
 				this.categoryList.forEach((item, index) => {
@@ -262,7 +281,7 @@
 					this.tools.alert.toast('请先点菜!');
 					return
 				}
-				this.toUrl('/pages/confirm_order', {shop_id: 1});
+				this.toUrl('/pages/confirm_order', {shop_id: this.shopInfo.id});
 			},
 			
 			init: function() {
@@ -307,6 +326,7 @@
 
 			// 打开菜品详情
 			openDetails: function(val) {
+				this.details = val;
 				this.isShowdetails = true;
 			}
 		},
